@@ -2,56 +2,44 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-/* Flat icon-style box truck — blue outline, white fill, facing RIGHT */
+/*
+  Flat outline truck (cab-over style), faces RIGHT.
+  White fill + #2563EB stroke — matches the clean flat icon style.
+*/
 const TruckSVG = () => (
-  <svg viewBox="0 0 148 52" width="148" height="52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 230 68" width="230" height="68" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-    {/* ── CARGO BOX (left 2/3) ─────────────────── */}
-    <rect x="2" y="5" width="82" height="32" rx="2" fill="white" stroke="#2563EB" strokeWidth="2" />
-    {/* Rear door detail */}
-    <line x1="12" y1="5"  x2="12" y2="37" stroke="#2563EB" strokeWidth="2" />
-    <line x1="7"  y1="14" x2="12" y2="14" stroke="#2563EB" strokeWidth="1.5" />
-    <line x1="7"  y1="28" x2="12" y2="28" stroke="#2563EB" strokeWidth="1.5" />
+    {/* ── TRAILER ─────────────────────────────── */}
+    <rect x="4" y="6" width="136" height="43" rx="3" fill="white" stroke="#2563EB" strokeWidth="2" />
 
-    {/* ── CAB (right 1/3) ──────────────────────── */}
-    {/* Cab body — stepped: tall section + lower hood */}
-    {/* Cab back wall shared with cargo front */}
-    <path
-      d="M84 5 L84 37 L132 37 L132 22 L126 14 L126 5 Z"
-      fill="white" stroke="#2563EB" strokeWidth="2" strokeLinejoin="round"
-    />
-    {/* Step line between cab-body and hood slope */}
-    <line x1="126" y1="5" x2="126" y2="22" stroke="#2563EB" strokeWidth="2" />
-    <line x1="126" y1="22" x2="132" y2="22" stroke="#2563EB" strokeWidth="2" />
-    {/* Windshield — big angled pane */}
-    <path
-      d="M118 7 L126 7 L126 20 L110 20 Z"
-      fill="#2563EB" fillOpacity="0.12" stroke="#2563EB" strokeWidth="1.5" strokeLinejoin="round"
-    />
-    {/* Door window */}
-    <rect x="86" y="9" width="20" height="13" rx="1.5" fill="#2563EB" fillOpacity="0.1" stroke="#2563EB" strokeWidth="1.5" />
-    {/* Door handle */}
-    <line x1="92" y1="27" x2="100" y2="27" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" />
-    {/* Headlight */}
-    <circle cx="132" cy="28" r="3" fill="#2563EB" />
-    {/* Front bumper */}
-    <rect x="130" y="33" width="6" height="4" rx="1" fill="#2563EB" />
+    {/* ── COUPLING ────────────────────────────── */}
+    <rect x="138" y="34" width="20" height="9" rx="2" fill="white" stroke="#2563EB" strokeWidth="1.5" />
 
-    {/* ── EXHAUST STACK ────────────────────────── */}
-    <rect x="112" y="0" width="4" height="7" rx="2" fill="#2563EB" />
+    {/* ── CAB BODY ────────────────────────────── */}
+    <rect x="156" y="10" width="66" height="39" rx="3" fill="white" stroke="#2563EB" strokeWidth="2" />
 
-    {/* ── WHEELS ───────────────────────────────── */}
-    {/* Rear dual wheels */}
-    <circle cx="20" cy="43" r="8" fill="white" stroke="#2563EB" strokeWidth="2" />
-    <circle cx="20" cy="43" r="3"  fill="#2563EB" />
-    <circle cx="28" cy="43" r="7"  fill="white" stroke="#2563EB" strokeWidth="1.5" strokeOpacity="0.5" />
-    <circle cx="28" cy="43" r="2.5" fill="#2563EB" fillOpacity="0.5" />
-    {/* Front trailer wheel */}
-    <circle cx="66" cy="43" r="8" fill="white" stroke="#2563EB" strokeWidth="2" />
-    <circle cx="66" cy="43" r="3"  fill="#2563EB" />
-    {/* Cab/drive wheel */}
-    <circle cx="112" cy="43" r="8" fill="white" stroke="#2563EB" strokeWidth="2" />
-    <circle cx="112" cy="43" r="3"  fill="#2563EB" />
+    {/* Side window */}
+    <rect x="160" y="14" width="30" height="18" rx="2" fill="white" stroke="#2563EB" strokeWidth="1.5" />
+
+    {/* Front windshield (right face of cab) */}
+    <rect x="200" y="14" width="18" height="20" rx="2" fill="white" stroke="#2563EB" strokeWidth="1.5" />
+
+    {/* Exhaust stack */}
+    <rect x="162" y="2" width="5" height="10" rx="2.5" fill="white" stroke="#2563EB" strokeWidth="1.5" />
+
+    {/* ── TRAILER WHEELS ──────────────────────── */}
+    <circle cx="34"  cy="57" r="9" fill="white" stroke="#2563EB" strokeWidth="2" />
+    <circle cx="34"  cy="57" r="4" fill="white" stroke="#2563EB" strokeWidth="1.5" />
+    <circle cx="108" cy="57" r="9" fill="white" stroke="#2563EB" strokeWidth="2" />
+    <circle cx="108" cy="57" r="4" fill="white" stroke="#2563EB" strokeWidth="1.5" />
+
+    {/* ── DRIVE WHEEL ─────────────────────────── */}
+    <circle cx="175" cy="57" r="9" fill="white" stroke="#2563EB" strokeWidth="2" />
+    <circle cx="175" cy="57" r="4" fill="white" stroke="#2563EB" strokeWidth="1.5" />
+
+    {/* ── STEER WHEEL ─────────────────────────── */}
+    <circle cx="207" cy="57" r="9" fill="white" stroke="#2563EB" strokeWidth="2" />
+    <circle cx="207" cy="57" r="4" fill="white" stroke="#2563EB" strokeWidth="1.5" />
   </svg>
 );
 
@@ -67,17 +55,30 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
-      {/* Main bar — overflow-hidden only here so the truck clips correctly */}
+      {/* Main bar */}
       <div className="relative overflow-hidden border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Truck — rendered FIRST so it sits behind the nav content */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            bottom: -4,
+            zIndex: 0,
+            opacity: 0.45,
+            animation: 'truck-drive 14s linear infinite',
+          }}
+        >
+          <TruckSVG />
+        </div>
+
+        {/* Nav content — sits on top of the truck */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ zIndex: 1 }}>
           <div className="flex items-center justify-between h-16">
 
-            {/* Logo — text only, truck replaced the icon */}
             <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
               <span className="text-[#0A1628] font-bold text-xl tracking-tight">FleetCore</span>
             </Link>
 
-            {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
@@ -90,7 +91,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Desktop CTAs */}
             <div className="hidden md:flex items-center gap-3">
               <Link
                 href="/login"
@@ -106,7 +106,6 @@ export default function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile hamburger */}
             <button
               onClick={() => setOpen(!open)}
               className="md:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
@@ -124,20 +123,9 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-
-        {/* Animated truck — rides along the bottom of the nav bar */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            bottom: -2,
-            animation: 'truck-drive 10s linear infinite',
-          }}
-        >
-          <TruckSVG />
-        </div>
       </div>
 
-      {/* Mobile menu — outside overflow-hidden so it's not clipped */}
+      {/* Mobile menu */}
       {open && (
         <div className="md:hidden border-b border-gray-100 py-3 space-y-1 bg-white/95 backdrop-blur-sm">
           {navLinks.map((link) => (
