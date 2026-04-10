@@ -2,94 +2,56 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-/* American semi-truck SVG — Kenworth/Peterbilt style, facing RIGHT (front on the right) */
+/* Flat icon-style box truck — blue outline, white fill, facing RIGHT */
 const TruckSVG = () => (
-  <svg viewBox="0 0 195 52" width="195" height="52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg viewBox="0 0 148 52" width="148" height="52" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-    {/* ── TRAILER ─────────────────────────────── */}
-    {/* Main trailer box */}
-    <rect x="2" y="6" width="88" height="28" rx="1.5" fill="#1B2E4B" stroke="#2563EB" strokeWidth="0.7" />
-    {/* Rear doors */}
-    <rect x="2" y="6" width="8" height="28" rx="1" fill="#243a5e" stroke="#2563EB" strokeWidth="0.7" />
-    <line x1="6" y1="8" x2="6" y2="32" stroke="#2563EB" strokeWidth="0.5" strokeOpacity="0.5" />
-    {/* Trailer ribs */}
-    <line x1="30" y1="6" x2="30" y2="34" stroke="#2563EB" strokeWidth="0.4" strokeOpacity="0.25" />
-    <line x1="55" y1="6" x2="55" y2="34" stroke="#2563EB" strokeWidth="0.4" strokeOpacity="0.25" />
-    <line x1="78" y1="6" x2="78" y2="34" stroke="#2563EB" strokeWidth="0.4" strokeOpacity="0.25" />
-    {/* FLEETCORE label */}
-    <text x="46" y="23" fontSize="6" fill="#2563EB" fillOpacity="0.75" fontFamily="system-ui,sans-serif" fontWeight="bold" textAnchor="middle" letterSpacing="1">FLEETCORE</text>
-    {/* Undercarriage bar */}
-    <rect x="10" y="34" width="78" height="2" fill="#374151" />
+    {/* ── CARGO BOX (left 2/3) ─────────────────── */}
+    <rect x="2" y="5" width="82" height="32" rx="2" fill="white" stroke="#2563EB" strokeWidth="2" />
+    {/* Rear door detail */}
+    <line x1="12" y1="5"  x2="12" y2="37" stroke="#2563EB" strokeWidth="2" />
+    <line x1="7"  y1="14" x2="12" y2="14" stroke="#2563EB" strokeWidth="1.5" />
+    <line x1="7"  y1="28" x2="12" y2="28" stroke="#2563EB" strokeWidth="1.5" />
 
-    {/* ── TRAILER WHEELS (dual axle) ───────────── */}
-    {/* Rear axle */}
-    <circle cx="22" cy="40" r="7" fill="#111827" /><circle cx="22" cy="40" r="4.5" fill="#1F2937" /><circle cx="22" cy="40" r="1.8" fill="#4B5563" />
-    <circle cx="27" cy="40" r="6" fill="#0f172a" fillOpacity="0.6" />
-    {/* Front axle */}
-    <circle cx="60" cy="40" r="7" fill="#111827" /><circle cx="60" cy="40" r="4.5" fill="#1F2937" /><circle cx="60" cy="40" r="1.8" fill="#4B5563" />
-    <circle cx="65" cy="40" r="6" fill="#0f172a" fillOpacity="0.6" />
-
-    {/* ── FIFTH WHEEL / COUPLING ───────────────── */}
-    <rect x="86" y="32" width="16" height="5" rx="1" fill="#374151" />
-    <rect x="90" y="30" width="8" height="4" rx="1" fill="#4B5563" />
-
-    {/* ── SLEEPER CAB ─────────────────────────── */}
-    <rect x="90" y="7" width="22" height="27" rx="1.5" fill="#0A1628" stroke="#2563EB" strokeWidth="0.7" />
-    {/* Sleeper window */}
-    <rect x="93" y="10" width="15" height="9" rx="1" fill="#2563EB" fillOpacity="0.25" stroke="#2563EB" strokeWidth="0.5" strokeOpacity="0.5" />
-
-    {/* ── MAIN CAB ────────────────────────────── */}
-    <rect x="112" y="9" width="24" height="25" rx="1.5" fill="#0A1628" stroke="#2563EB" strokeWidth="0.7" />
-    {/* Big cab window */}
-    <rect x="115" y="11" width="18" height="13" rx="1" fill="#2563EB" fillOpacity="0.3" stroke="#2563EB" strokeWidth="0.5" strokeOpacity="0.6" />
-    {/* Window glare */}
-    <line x1="117" y1="12" x2="115" y2="18" stroke="white" strokeWidth="0.8" strokeOpacity="0.35" strokeLinecap="round" />
+    {/* ── CAB (right 1/3) ──────────────────────── */}
+    {/* Cab body — stepped: tall section + lower hood */}
+    {/* Cab back wall shared with cargo front */}
+    <path
+      d="M84 5 L84 37 L132 37 L132 22 L126 14 L126 5 Z"
+      fill="white" stroke="#2563EB" strokeWidth="2" strokeLinejoin="round"
+    />
+    {/* Step line between cab-body and hood slope */}
+    <line x1="126" y1="5" x2="126" y2="22" stroke="#2563EB" strokeWidth="2" />
+    <line x1="126" y1="22" x2="132" y2="22" stroke="#2563EB" strokeWidth="2" />
+    {/* Windshield — big angled pane */}
+    <path
+      d="M118 7 L126 7 L126 20 L110 20 Z"
+      fill="#2563EB" fillOpacity="0.12" stroke="#2563EB" strokeWidth="1.5" strokeLinejoin="round"
+    />
+    {/* Door window */}
+    <rect x="86" y="9" width="20" height="13" rx="1.5" fill="#2563EB" fillOpacity="0.1" stroke="#2563EB" strokeWidth="1.5" />
     {/* Door handle */}
-    <rect x="128" y="22" width="5" height="1.5" rx="0.5" fill="#374151" />
-    {/* Fuel tanks (side) */}
-    <rect x="113" y="28" width="10" height="6" rx="1" fill="#1F2937" stroke="#374151" strokeWidth="0.5" />
+    <line x1="92" y1="27" x2="100" y2="27" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" />
+    {/* Headlight */}
+    <circle cx="132" cy="28" r="3" fill="#2563EB" />
+    {/* Front bumper */}
+    <rect x="130" y="33" width="6" height="4" rx="1" fill="#2563EB" />
 
-    {/* ── LONG NOSE / HOOD (American style) ───── */}
-    <path d="M136 11 L168 17 L170 34 L136 34 Z" fill="#0A1628" stroke="#2563EB" strokeWidth="0.7" />
-    {/* Hood stripe */}
-    <line x1="138" y1="13" x2="166" y2="18" stroke="#2563EB" strokeWidth="0.6" strokeOpacity="0.35" />
-    {/* Air intake on hood */}
-    <rect x="150" y="14" width="10" height="3" rx="0.5" fill="#1F2937" stroke="#374151" strokeWidth="0.4" />
+    {/* ── EXHAUST STACK ────────────────────────── */}
+    <rect x="112" y="0" width="4" height="7" rx="2" fill="#2563EB" />
 
-    {/* ── GRILL (chrome, American style) ──────── */}
-    <rect x="168" y="17" width="8" height="17" rx="0.5" fill="#1F2937" stroke="#6B7280" strokeWidth="0.5" />
-    <line x1="169" y1="20" x2="175" y2="20" stroke="#9CA3AF" strokeWidth="0.6" />
-    <line x1="169" y1="23" x2="175" y2="23" stroke="#9CA3AF" strokeWidth="0.6" />
-    <line x1="169" y1="26" x2="175" y2="26" stroke="#9CA3AF" strokeWidth="0.6" />
-    <line x1="169" y1="29" x2="175" y2="29" stroke="#9CA3AF" strokeWidth="0.6" />
-
-    {/* ── FRONT BUMPER (chrome) ───────────────── */}
-    <rect x="166" y="34" width="14" height="4" rx="0.5" fill="#6B7280" stroke="#9CA3AF" strokeWidth="0.4" />
-
-    {/* ── HEADLIGHTS ──────────────────────────── */}
-    <circle cx="170" cy="16" r="3" fill="#FCD34D" fillOpacity="0.85" />
-    <circle cx="170" cy="16" r="1.5" fill="white" fillOpacity="0.7" />
-
-    {/* ── EXHAUST STACKS (twin vertical) ──────── */}
-    <rect x="114" y="1"  width="3" height="10" rx="1.5" fill="#374151" stroke="#4B5563" strokeWidth="0.4" />
-    <rect x="120" y="1"  width="3" height="10" rx="1.5" fill="#374151" stroke="#4B5563" strokeWidth="0.4" />
-    {/* Smoke puffs */}
-    <circle cx="115" cy="0"  r="1.8" fill="#9CA3AF" fillOpacity="0.45" />
-    <circle cx="113" cy="-2" r="1.2" fill="#9CA3AF" fillOpacity="0.25" />
-    <circle cx="121" cy="0"  r="1.8" fill="#9CA3AF" fillOpacity="0.45" />
-    <circle cx="123" cy="-2" r="1.2" fill="#9CA3AF" fillOpacity="0.25" />
-
-    {/* ── DRIVE WHEELS (dual rear axle) ────────── */}
-    <circle cx="101" cy="40" r="7" fill="#111827" /><circle cx="101" cy="40" r="4.5" fill="#1F2937" /><circle cx="101" cy="40" r="1.8" fill="#4B5563" />
-    <circle cx="106" cy="40" r="6" fill="#0f172a" fillOpacity="0.6" />
-    <circle cx="114" cy="40" r="7" fill="#111827" /><circle cx="114" cy="40" r="4.5" fill="#1F2937" /><circle cx="114" cy="40" r="1.8" fill="#4B5563" />
-    <circle cx="119" cy="40" r="6" fill="#0f172a" fillOpacity="0.6" />
-
-    {/* ── FRONT STEER WHEEL ───────────────────── */}
-    <circle cx="163" cy="40" r="7" fill="#111827" /><circle cx="163" cy="40" r="4.5" fill="#1F2937" /><circle cx="163" cy="40" r="1.8" fill="#4B5563" />
-
-    {/* ── GROUND SHADOW ───────────────────────── */}
-    <ellipse cx="90" cy="48" rx="88" ry="2.5" fill="#0A1628" fillOpacity="0.12" />
+    {/* ── WHEELS ───────────────────────────────── */}
+    {/* Rear dual wheels */}
+    <circle cx="20" cy="43" r="8" fill="white" stroke="#2563EB" strokeWidth="2" />
+    <circle cx="20" cy="43" r="3"  fill="#2563EB" />
+    <circle cx="28" cy="43" r="7"  fill="white" stroke="#2563EB" strokeWidth="1.5" strokeOpacity="0.5" />
+    <circle cx="28" cy="43" r="2.5" fill="#2563EB" fillOpacity="0.5" />
+    {/* Front trailer wheel */}
+    <circle cx="66" cy="43" r="8" fill="white" stroke="#2563EB" strokeWidth="2" />
+    <circle cx="66" cy="43" r="3"  fill="#2563EB" />
+    {/* Cab/drive wheel */}
+    <circle cx="112" cy="43" r="8" fill="white" stroke="#2563EB" strokeWidth="2" />
+    <circle cx="112" cy="43" r="3"  fill="#2563EB" />
   </svg>
 );
 
